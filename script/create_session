@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+DESCRIPTION=$1
+START=$2
+END=$3
+JSON={\"session\":{\"description\":\"$DESCRIPTION\",\"start_time\":\"$START\",\"end_time\":\"$END\"}}
+curl -H "Content-Type: application/json" -H "Accept: application/json" -X POST http://localhost:3000/sessions.json -d "$JSON"
