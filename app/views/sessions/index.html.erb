@@ -1,10 +1,11 @@
-<h1>Listing sessions</h1>
+<h1>Sessions</h1>
 
-<table>
+<table border='1'>
   <tr>
     <th>Description</th>
-    <th>Start time</th>
-    <th>End time</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Duration</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,8 +14,9 @@
 <% @sessions.each do |session| %>
   <tr>
     <td><%= session.description %></td>
-    <td><%= session.start_time %></td>
-    <td><%= session.end_time %></td>
+    <td><%= time session.start_time %></td>
+    <td><%= time session.end_time %></td>
+    <td><%= duration session.end_time-session.start_time %></td>
     <td><%= link_to 'Show', session %></td>
     <td><%= link_to 'Edit', edit_session_path(session) %></td>
     <td><%= link_to 'Destroy', session, confirm: 'Are you sure?', method: :delete %></td>
