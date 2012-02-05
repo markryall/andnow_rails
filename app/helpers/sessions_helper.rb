@@ -11,4 +11,10 @@ module SessionsHelper
     return "#{minutes} minutes #{s} seconds" if minutes > 0
     "#{s}.#{ms} seconds"
   end
+
+  def cost c
+    return '' unless c
+    d,c=c/100,c%100
+    "$#{d}.#{c}"
+  end
 end

@@ -6,6 +6,8 @@
     <th>Start</th>
     <th>End</th>
     <th>Duration</th>
+    <th>Count</th>
+    <th>Cost</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +19,8 @@
     <td><%= time session.start_time %></td>
     <td><%= time session.end_time %></td>
     <td><%= duration session.end_time-session.start_time %></td>
+    <td><%= session.count %></td>
+    <td><%= cost session.cost %></td>
     <td><%= link_to 'Show', session %></td>
     <td><%= link_to 'Edit', edit_session_path(session) %></td>
     <td><%= link_to 'Destroy', session, confirm: 'Are you sure?', method: :delete %></td>
