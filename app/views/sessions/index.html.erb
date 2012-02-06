@@ -2,6 +2,7 @@
 
 <table border='1'>
   <tr>
+    <th></th>
     <th>Description</th>
     <th>Start</th>
     <th>End</th>
@@ -15,6 +16,7 @@
 
 <% @sessions.each do |session| %>
   <tr>
+    <td><%= session.id %></td>
     <td><%= session.description %></td>
     <td><%= time session.start_time %></td>
     <td><%= time session.end_time %></td>
