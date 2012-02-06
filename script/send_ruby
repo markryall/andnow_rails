@@ -1,0 +1,12 @@
+require 'json'
+
+def send hash
+  system "curl -H \"Content-Type: application/json\" -H \"Accept: application/json\" -X POST http://localhost:3000/sessions.json -d '#{hash.to_json}'"
+  end
+
+  send description: "Cleaning teeth", start_time: 1328453215833, end_time: 1328453569133
+  send description: "Sleeping ", start_time: 1328453578541, end_time: 1328476552313
+  send description: "Walking", start_time: 1328480848121, end_time: 1328481259666
+  send description: "Bus", start_time: 1328482120646, end_time: 1328484390827
+  send description: "And now backend", start_time: 1328482191808, end_time: 1328484098975
+  send description: "Breakfast ", start_time: 1328485494693, end_time: 1328487495244, cost: 3640

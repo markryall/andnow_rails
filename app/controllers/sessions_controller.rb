@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   # GET /sessions
   # GET /sessions.json
   def index
-    @sessions = Session.all
+    @sessions = Session.order :start_time
 
     respond_to do |format|
       format.html # index.html.erb

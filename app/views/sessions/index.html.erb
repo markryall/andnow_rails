@@ -20,7 +20,7 @@
     <td><%= session.description %></td>
     <td><%= time session.start_time %></td>
     <td><%= time session.end_time %></td>
-    <td><%= duration session.end_time, session.start_time %></td>
+    <td><%= duration session.start_time, session.end_time %></td>
     <td><%= session.count %></td>
     <td><%= cost session.cost %></td>
     <td><%= link_to 'Show', session %></td>
