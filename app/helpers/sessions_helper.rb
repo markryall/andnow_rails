@@ -1,9 +1,12 @@
 module SessionsHelper
   def time ms
-    Time.at(ms/1000).strftime '%d/%m %H:%M'
+    return '' unless ms
+    Time.at(ms/1000).strftime '%a %d %b %H:%M:%S'
   end
 
-  def duration ms
+  def duration from, to
+    return '' unless from and to
+    ms = to - from
     s,ms=ms/1000,ms%1000
     minutes,s=s/60,s%60
     hours,minutes=minutes/60,minutes%60
