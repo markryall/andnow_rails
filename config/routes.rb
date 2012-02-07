@@ -1,6 +1,6 @@
 AndnowServer::Application.routes.draw do
   resources :sessions
-
+  match 'home' => 'home#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
