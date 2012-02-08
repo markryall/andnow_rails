@@ -1,7 +1,16 @@
 require 'net/http'
 
 class HomeController < ApplicationController
-  def login
+  def index
+    redirect_to '/home/login' unless session[:email]
+  end
+
+  def logout
+    session[:email] = nil
+    redirect_to '/home/login'
+  end
+
+  def verify
     ans = 'invalid'
     if (params['assertion'] != nil)
       assertion = params['assertion']
