@@ -30,3 +30,25 @@
 @include font-face("Steelfish", font-files("/fonts/steelfish-bd.otf", opentype), false, bold);
 @include font-face("Steelfish", font-files("/fonts/steelfish-eb.otf", opentype), false, 900);
 
+body {
+  background:url('/assets/bg.gif');
+}
+
+#content {
+  width: 60%;
+  margin: auto;
+}
+
+#authenticate {
+  float: right;
+  padding: 18px;
+  height: 22px;
+  width: 79px;
+}
+
+h1 {
+  font-family: "Steelfish", Impact, sans-serif;
+  color: #b00;
+  text-shadow: #ddd 1px 1px 0;
+  float:left;
+}
