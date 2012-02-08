@@ -11,27 +11,20 @@ class HomeController < ApplicationController
   end
 
   def verify
-    ans = 'invalid'
-    if (params['assertion'] != nil)
-      assertion = params['assertion']
-      audience = request.host_with_port
-      http = Net::HTTP.new('browserid.org', 443)
+    bid_resp = {}
+    if params['assertion'] != nil
+      http = Net::HTTP.new 'browserid.org', 443
       http.use_ssl = true
-      headers = {
-       'Content-Type' => 'application/x-www-form-urlencoded',
-      }
-      data = "audience="+audience+"&assertion="+assertion
-      resp = http.post("/verify",data,headers)
+      response = http.post '/verify',
+        "audience=#{request.host_with_port}&assertion=#{params['assertion']}",
+        { 'Content-Type' => 'application/x-www-form-urlencoded' }
       begin
-        bid_resp = JSON.parse(resp.body)
-        if (bid_resp['status'] == "okay")
-          session[:email] = bid_resp['email']
-          ans = "logged in as #{bid_resp['email']}"
-        end
+        bid_resp = JSON.parse response.body
+        session[:email] = bid_resp['email'] if bid_resp['status'] == 'okay'
       rescue JSON::ParserError
-        logger.info "BrowserId returning bad JSON?"
+        logger.info 'BrowserId returning bad JSON?'
       end
     end
-    render :text => ans
+    render json: bid_resp
   end
 end
