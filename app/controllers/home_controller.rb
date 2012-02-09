@@ -12,7 +12,7 @@ class HomeController < ApplicationController
 
   def verify
     bid_resp = {}
-    if params['assertion'] != nil
+    if params['assertion']
       http = Net::HTTP.new 'browserid.org', 443
       http.use_ssl = true
       response = http.post '/verify',
