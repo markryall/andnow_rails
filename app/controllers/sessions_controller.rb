@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   # GET /sessions
   # GET /sessions.json
   def index
-    @sessions = Session.order :start_time
+    @sessions = Session.where("user_id = ?", session[:user_id]).order(:start_time)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,7 +40,16 @@ class SessionsController < ApplicationController
   # POST /sessions
   # POST /sessions.json
   def create
-    @session = Session.new(params[:session])
+    session_params = params[:session]
+    session_params.delete :user_id
+    session_params[:user_id] = session[:user_id] if session[:user_id]
+    unless session_params[:user_id] and session_params[:token]
+      session_params.delete :token
+      user = User.find_by_token session_params[:token]
+      session_params[:user_id] = user.id if user
+    end
+
+    @session = Session.new session_params
 
     respond_to do |format|
       if @session.save

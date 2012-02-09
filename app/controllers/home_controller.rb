@@ -23,9 +23,7 @@ class HomeController < ApplicationController
         if bid_resp['status'] == 'okay'
           email = bid_resp['email']
           user = User.find_by_email email
-          unless user
-            user = User.create email: email
-          end
+          user = User.create email: email unless user
           session[:email] = email
           session[:user_id] = user.id
         end
