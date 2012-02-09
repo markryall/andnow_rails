@@ -7,6 +7,7 @@ class HomeController < ApplicationController
 
   def logout
     session[:email] = nil
+    session[:user_id] = nil
     redirect_to :login
   end
 

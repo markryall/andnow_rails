@@ -1,3 +1,11 @@
+<% content_for :navbar do %>
+  <ul class="nav">
+    <li><%= link_to 'Home', root_url %></li>
+    <li class="active"><%= link_to 'Sessions', sessions_url %></li>
+    <li><a href="#contact">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+<% end %>
 
 <h1>Sessions</h1>
 

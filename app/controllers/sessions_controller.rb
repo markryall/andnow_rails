@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_filter :require_login, :except => [:create]
+
   # GET /sessions
   # GET /sessions.json
   def index
