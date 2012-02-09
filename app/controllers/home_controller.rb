@@ -20,7 +20,15 @@ class HomeController < ApplicationController
         { 'Content-Type' => 'application/x-www-form-urlencoded' }
       begin
         bid_resp = JSON.parse response.body
-        session[:email] = bid_resp['email'] if bid_resp['status'] == 'okay'
+        if bid_resp['status'] == 'okay'
+          email = bid_resp['email']
+          user = User.find_by_email email
+          unless user
+            user = User.create email: email
+          end
+          session[:email] = email
+          session[:user_id] = user.id
+        end
       rescue JSON::ParserError
         logger.info 'BrowserId returning bad JSON?'
       end
