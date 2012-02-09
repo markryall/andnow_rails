@@ -2,12 +2,12 @@ require 'net/http'
 
 class HomeController < ApplicationController
   def index
-    redirect_to '/home/login' unless session[:email]
+    redirect_to :login unless session[:email]
   end
 
   def logout
     session[:email] = nil
-    redirect_to '/home/login'
+    redirect_to :login
   end
 
   def verify
