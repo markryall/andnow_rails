@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+if [ -z "$4" ]; then
+  echo usage: create_session description start end token
+  exit
+fi
+DESCRIPTION=$1
+START=$2
+END=$3
+TOKEN=$4
+JSON={\"session\":{\"description\":\"$DESCRIPTION\",\"start_time\":\"$START\",\"end_time\":\"$END\",\"token\":\"$TOKEN\"}}
+curl -H "Content-Type: application/json" -H "Accept: application/json" -X POST http://andnow.herokuapp.com/sessions.json -d "$JSON"

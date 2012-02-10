@@ -46,8 +46,8 @@ class SessionsController < ApplicationController
     session_params.delete :user_id
     session_params[:user_id] = session[:user_id] if session[:user_id]
     if session_params[:token]
-      session_params.delete :token
       user = User.find_by_token session_params[:token]
+      session_params.delete :token
       session_params[:user_id] = user.id if user
     end
 
