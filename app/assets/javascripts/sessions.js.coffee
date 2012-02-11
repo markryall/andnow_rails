@@ -14,3 +14,21 @@ $(document).bind 'keydown', 'ctrl+e', ->
   ts = now.getTime()
   rounded = Math.ceil(ts/1000)
   $('#session_end_time').val rounded
+
+index = 0
+
+$(document).bind 'keydown', 'j', ->
+  $('tbody > tr').eq(index).attr 'class', ''
+  index += 1
+  $('tbody > tr').eq(index).attr 'class', 'row_selected'
+
+$(document).bind 'keydown', 'k', ->
+  $('tbody > tr').eq(index).attr 'class', ''
+  index -= 1
+  $('tbody > tr').eq(index).attr 'class', 'row_selected'
+
+$(document).bind 'keydown', 'e', ->
+  window.location = $('a.e').eq(index).attr('href');
+
+$(document).bind 'keydown', 'o', ->
+  window.location = $('a.v').eq(index).attr('href')

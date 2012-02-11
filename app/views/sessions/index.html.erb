@@ -34,17 +34,17 @@
     <td><%= session.count %></td>
     <td><%= cost session.cost %></td>
     <td>
-      <%= link_to session do %>
+      <%= link_to session, class: 'v' do %>
         <i class="icon-eye-open"></i>
       <% end %>
     </td>
     <td>
-      <%= link_to edit_session_path(session) do %>
+      <%= link_to edit_session_path(session), class: 'e' do %>
         <i class="icon-edit"></i>
       <% end %>
     </td>
     <td>
-      <%= link_to session, confirm: 'Are you sure?', method: :delete do %>
+      <%= link_to session, class: 'd', confirm: 'Are you sure?', method: :delete do %>
         <i class="icon-remove-circle"></i>
       <% end %>
     </td>
