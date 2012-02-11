@@ -1,6 +1,6 @@
 module SessionsHelper
   def time s
-    return '' unless ms
+    return '' unless s
     Time.at(s).strftime '%a %d %b %H:%M:%S'
   end
 
