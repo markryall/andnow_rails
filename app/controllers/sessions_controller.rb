@@ -27,6 +27,7 @@ class SessionsController < ApplicationController
   # GET /sessions/new.json
   def new
     @session = Session.new
+    @session.start_time = Time.now.to_i
 
     respond_to do |format|
       format.html # new.html.erb
