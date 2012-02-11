@@ -44,14 +44,14 @@ class SessionsController < ApplicationController
   def create
     session_params = params[:session]
     session_params.delete :user_id
-    session_params[:user_id] = session[:user_id] if session[:user_id]
-    if session_params[:token]
+    user = current_user
+    if !user and session_params[:token]
       user = User.find_by_token session_params[:token]
       session_params.delete :token
-      session_params[:user_id] = user.id if user
     end
 
     @session = Session.new session_params
+    @session.user = user
 
     respond_to do |format|
       if @session.save
