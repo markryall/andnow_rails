@@ -5,6 +5,10 @@ class HomeController < ApplicationController
     redirect_to :login unless session[:email]
   end
 
+  def profile
+    current_user
+  end
+
   def logout
     session[:email] = nil
     session[:user_id] = nil

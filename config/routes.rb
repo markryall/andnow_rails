@@ -1,8 +1,9 @@
 AndnowServer::Application.routes.draw do
   resources :sessions
-  match 'home' => 'home#index'
-  match 'home/login' => 'home#login', as: 'login'
-  match 'home/logout' => 'home#logout', as: 'logout'
-  match 'home/verify' => 'home#verify', as: 'verify'
+  resource :user, :only => [:show, :update]
+  get 'home' => 'home#index'
+  get 'home/login' => 'home#login', as: 'login'
+  get 'home/logout' => 'home#logout', as: 'logout'
+  post 'home/verify' => 'home#verify', as: 'verify'
   root :to => 'home#index'
 end
