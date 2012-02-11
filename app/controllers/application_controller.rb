@@ -6,6 +6,7 @@ private
       flash[:error] = "You are not logged in"
       redirect_to root_url
     end
+    Time.zone = current_user.timezone if current_user and current_user.timezone
   end
 
   def logged_in?
@@ -15,7 +16,5 @@ private
   def current_user
     return nil unless session[:user_id]
     @current_user ||= User.find session[:user_id]
-    Time.zone = @current_user.timezone if @current_user and @current_user.timezone
-    @current_user
   end
 end
