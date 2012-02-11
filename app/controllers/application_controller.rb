@@ -15,5 +15,7 @@ private
   def current_user
     return nil unless session[:user_id]
     @current_user ||= User.find session[:user_id]
+    Time.zone = @current_user.timezone if @current_user and @current_user.timezone
+    @current_user
   end
 end

@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   # GET /sessions
   # GET /sessions.json
   def index
-    @sessions = Session.where("user_id = ?", session[:user_id]).order(:start_time)
+    @sessions = Session.where("user_id = ?", session[:user_id]).order "start_time DESC"
 
     respond_to do |format|
       format.html # index.html.erb
