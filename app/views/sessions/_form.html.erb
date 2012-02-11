@@ -1,4 +1,4 @@
-<%= form_for(@session) do |f| %>
+<%= form_for @session, html: {class: 'well'} do |f| %>
   <% if @session.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@session.errors.count, "error") %> prohibited this session from being saved:</h2>
@@ -11,26 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :start_time %><br />
-    <%= f.number_field :start_time %>
-  </div>
-  <div class="field">
-    <%= f.label :end_time %><br />
-    <%= f.number_field :end_time %>
-  </div>
-  <div class="field">
-    <%= f.label :count %><br />
-    <%= f.number_field :count %>
-  </div>
-  <div class="field">
-    <%= f.label :cost %><br />
-    <%= f.number_field :cost %>
-  </div>
+  <%= f.text_field :description, placeholder: 'Description', class: 'focused' %>
+  <%= f.number_field :start_time, placeholder: 'Start' %>
+  <%= f.number_field :end_time, placeholder: 'End' %>
+  <%= f.number_field :count, placeholder: 'Count' %>
+  <%= f.number_field :cost, placeholder: 'Cost' %>
   <div class="actions">
     <%= f.submit %>
   </div>

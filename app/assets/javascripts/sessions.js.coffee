@@ -32,3 +32,7 @@ $(document).bind 'keydown', 'e', ->
 
 $(document).bind 'keydown', 'o', ->
   window.location = $('a.v').eq(index).attr('href')
+
+$ ->
+  $('.focused').trigger 'focus'
+  $('tbody > tr').eq(index).attr 'class', 'row_selected'
