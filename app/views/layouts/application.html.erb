@@ -13,8 +13,17 @@
         <div class="container">
           <a class="brand" href="#">and now?</a>
           <div class="nav-collapse">
-            <%= yield :navbar %>
+            <ul class="nav">
+              <%= yield :navbar_left %>
+            </ul>
           </div>
+          <ul class="nav pull-right">
+            <% if content_for? :navbar_right %>
+              <%= yield :navbar_right %>
+            <% else %>
+              <li><a href="/home/logout"><i class="icon-lock icon-white"></i> logout</a></li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </div>

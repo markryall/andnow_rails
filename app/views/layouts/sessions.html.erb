@@ -1,0 +1,7 @@
+<% content_for :navbar_left do %>
+  <li><%= link_to 'Home', root_url %></li>
+  <li class="active"><%= link_to 'Sessions', sessions_url %></li>
+  <li><%= link_to 'Profile', user_url %></li>
+<% end %>
+
+<%= render :template => 'layouts/application' %>
