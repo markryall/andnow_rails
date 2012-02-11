@@ -1,7 +1,7 @@
 module SessionsHelper
   def time s
     return '' unless s
-    Time.at(s).strftime '%a %d %b %H:%M:%S'
+    Time.zone.at(s).strftime '%a %d %b %H:%M:%S'
   end
 
   def duration from, to
