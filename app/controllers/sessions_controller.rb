@@ -43,26 +43,22 @@ class SessionsController < ApplicationController
   # POST /sessions
   # POST /sessions.json
   def create
-    session_params = params[:session]
-    session_params.delete :user_id
-    user = current_user
-    if !user and session_params[:token]
-      user = User.find_by_token session_params[:token]
-      session_params.delete :token
-    end
+    with_session do
+      Session.where([
+        'description = ? AND start_time = ? AND user_id = ?',
+        @session.description,
+        @session.start_time,
+        @session.user.id
+      ]).delete_all
 
-    session_params[:description].strip! if session_params[:description]
-
-    @session = Session.new session_params
-    @session.user = user
-
-    respond_to do |format|
-      if @session.save
-        format.html { redirect_to @session, notice: 'Session was successfully created.' }
-        format.json { render json: @session, status: :created, location: @session }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @session.save
+          format.html { redirect_to @session, notice: 'Session was successfully created.' }
+          format.json { render json: @session, status: :created, location: @session }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @session.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -93,5 +89,20 @@ class SessionsController < ApplicationController
       format.html { redirect_to sessions_url }
       format.json { head :no_content }
     end
+  end
+private
+  def with_session
+    session_params = params[:session]
+    return unless session_params
+    session_params.delete :user_id
+    user = current_user
+    if !user and session_params[:token]
+      user = User.find_by_token session_params[:token]
+      session_params.delete :token
+    end
+    session_params[:description].strip! if session_params[:description]
+    @session = Session.new session_params
+    @session.user = user
+    yield
   end
 end
