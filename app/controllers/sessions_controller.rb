@@ -51,6 +51,8 @@ class SessionsController < ApplicationController
       session_params.delete :token
     end
 
+    session_params[:description].strip! if session_params[:description]
+
     @session = Session.new session_params
     @session.user = user
 
