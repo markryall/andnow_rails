@@ -19,7 +19,7 @@
 
 <% @sessions.each do |session| %>
   <tr>
-    <td><%= session.description %></td>
+    <td><%= link_to session.description, activity_url(session.description) %></td>
     <td><%= time session.start_time %></td>
     <td><%= time session.end_time %></td>
     <td><%= duration session.start_time, session.end_time %></td>
