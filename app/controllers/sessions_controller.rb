@@ -1,19 +1,18 @@
+require 'csv'
+
 class SessionsController < ApplicationController
   before_filter :require_login, :except => [:create]
 
-  # GET /sessions
-  # GET /sessions.json
   def index
     @sessions = Session.where("user_id = ?", session[:user_id]).order "start_time DESC"
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
+      format.csv
       format.json { render json: @sessions }
     end
   end
 
-  # GET /sessions/1
-  # GET /sessions/1.json
   def show
     @session = Session.find(params[:id])
 
@@ -23,8 +22,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  # GET /sessions/new
-  # GET /sessions/new.json
   def new
     @session = Session.new
     @session.start_time = Time.now.to_i
@@ -35,13 +32,10 @@ class SessionsController < ApplicationController
     end
   end
 
-  # GET /sessions/1/edit
   def edit
     @session = Session.find(params[:id])
   end
 
-  # POST /sessions
-  # POST /sessions.json
   def create
     with_session do
       Session.where([
@@ -63,8 +57,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  # PUT /sessions/1
-  # PUT /sessions/1.json
   def update
     @session = Session.find(params[:id])
 
@@ -79,8 +71,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  # DELETE /sessions/1
-  # DELETE /sessions/1.json
   def destroy
     @session = Session.find(params[:id])
     @session.destroy
