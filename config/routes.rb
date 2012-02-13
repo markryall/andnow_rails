@@ -4,6 +4,7 @@ AndnowServer::Application.routes.draw do
   get 'home' => 'home#index'
   get 'home/login' => 'home#login', as: 'login'
   get 'home/logout' => 'home#logout', as: 'logout'
+  get 'activity/:activity' => 'activity#show', as: 'activity'
   post 'home/verify' => 'home#verify', as: 'verify'
   root :to => 'home#index'
 end

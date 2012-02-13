@@ -1,0 +1,45 @@
+<h1>Sessions</h1>
+
+<%= link_to 'Start Session', new_session_path %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Duration</th>
+      <th>Count</th>
+      <th>Cost</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+<% @sessions.each do |session| %>
+  <tr>
+    <td><%= session.description %></td>
+    <td><%= time session.start_time %></td>
+    <td><%= time session.end_time %></td>
+    <td><%= duration session.start_time, session.end_time %></td>
+    <td><%= session.count %></td>
+    <td><%= cost session.cost %></td>
+    <td>
+      <%= link_to session, class: 'v' do %>
+        <i class="icon-eye-open"></i>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to edit_session_path(session), class: 'e' do %>
+        <i class="icon-edit"></i>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to session, class: 'd', confirm: 'Are you sure?', method: :delete do %>
+        <i class="icon-remove-circle"></i>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
