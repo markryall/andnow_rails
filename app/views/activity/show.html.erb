@@ -1,16 +1,12 @@
-<h1>Sessions</h1>
-
-<%= link_to 'Start Session', new_session_path %>
-
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Description</th>
       <th>Start</th>
       <th>End</th>
       <th>Duration</th>
       <th>Count</th>
       <th>Cost</th>
+      <th>Notes</th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,12 +15,12 @@
 
 <% @sessions.each do |session| %>
   <tr>
-    <td><%= session.description %></td>
     <td><%= time session.start_time %></td>
     <td><%= time session.end_time %></td>
     <td><%= duration session.start_time, session.end_time %></td>
     <td><%= session.count %></td>
     <td><%= cost session.cost %></td>
+    <td><%= session.notes %></td>
     <td>
       <%= link_to session, class: 'v' do %>
         <i class="icon-eye-open"></i>
@@ -42,4 +38,7 @@
     </td>
   </tr>
 <% end %>
+  <tr>
+    <td></td>
+  </tr>
 </table>
