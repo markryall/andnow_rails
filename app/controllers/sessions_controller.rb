@@ -71,7 +71,7 @@ class SessionsController < ApplicationController
 
     respond_to do |format|
       if @session.update_attributes(params[:session])
-        format.html { redirect_to @session, notice: 'Session was successfully updated.' }
+        format.html { redirect_to sessions_path, notice: 'Session was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
