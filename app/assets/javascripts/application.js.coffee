@@ -1,6 +1,6 @@
-# //= require bootstrap
-# //= require jquery
-# //= require_tree .
+//= require bootstrap
+//= require jquery
+//= require_tree .
 
 $ ->
   $('#authenticate').click ->

@@ -56,7 +56,7 @@ class SessionsController < ApplicationController
 
       respond_to do |format|
         if @session.save
-          format.html { redirect_to @session, notice: 'Session was successfully created.' }
+          format.html { redirect_to sessions_path, notice: 'Session was successfully created.' }
           format.json { render json: @session, status: :created, location: @session }
         else
           format.html { render action: "new" }

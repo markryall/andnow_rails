@@ -1,6 +1,6 @@
 <%= form_for @session, html: {class: 'well'} do |f| %>
   <% if @session.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-error">
       <h2><%= pluralize(@session.errors.count, "error") %> prohibited this session from being saved:</h2>
 
       <ul>
