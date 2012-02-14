@@ -36,6 +36,15 @@ class SessionsController < ApplicationController
     @session = Session.find(params[:id])
   end
 
+  def import
+    lines = params[:import][:csv].tempfile.readlines
+    headers = CSV.parse(lines.shift).first
+    while line = lines.shift
+      Session.create_for current_user, CSV.parse(line, headers: headers).first.to_hash
+    end
+    redirect_to sessions_path
+  end
+
   def create
     with_session do
       Session.where([

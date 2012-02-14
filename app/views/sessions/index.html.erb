@@ -1,8 +1,18 @@
-<h1>Sessions</h1>
-
-<%= link_to 'Start Session', new_session_path %>
-
-<%= link_to "Export to csv", request.parameters.merge(format: :csv)%>
+<div class="row">
+  <div class="span3">
+    <h1>Sessions</h1>
+  </div>
+  <div class="span2">
+    <%= link_to 'New Session', new_session_path, class: 'btn' %>
+  </div>
+  <div class="span2">
+    <%= link_to "Export CSV", request.parameters.merge(format: :csv), class: 'btn'%>
+  </div>
+  <%= form_for :import, url: sessions_import_path, html: { multipart: true, class: 'form-search' } do |f| -%>
+    <div class="span2"><%= f.file_field :csv, class: 'input-file' %></div>
+    <div class="span2"><%= f.submit 'Import CSV', :disable_with => 'Importing...', class: 'btn' %></div>
+  <% end -%>
+</div>
 
 <table class="table table-striped">
   <thead>

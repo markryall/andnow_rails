@@ -1,0 +1,6 @@
+<%- headers = ["start_time", "end_time", "description", "cost", "count", "notes"] -%>
+<%= raw CSV.generate_line headers, :row_sep => '', :force_quotes => true %>
+<%- @sessions.each do |n| -%>
+<%- row = [ n.start_time, n.end_time, n.description.strip, n.cost, n.count, n.notes ] -%>
+<%= raw CSV.generate_line row, :row_sep => '', :force_quotes => true %>
+<%- end -%>

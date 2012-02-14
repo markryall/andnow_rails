@@ -1,5 +1,6 @@
 AndnowServer::Application.routes.draw do
   resources :sessions
+  post 'sessions/import' => 'sessions#import'
   resource :user, :only => [:show, :update]
   get 'home' => 'home#index'
   get 'home/login' => 'home#login', as: 'login'
