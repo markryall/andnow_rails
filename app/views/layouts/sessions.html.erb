@@ -4,4 +4,8 @@
   <li><%= link_to 'Profile', user_url %></li>
 <% end %>
 
+<% content_for :js do %>
+  <%= javascript_include_tag 'keyboard' %>
+<% end %>
+
 <%= render :template => 'layouts/application' %>
