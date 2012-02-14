@@ -70,6 +70,8 @@
     heroku apps:create -s cedar
     git push heroku master
     heroku run rake db:migrate
+    heroku config:add SECRET=`rake secret`
+    heroku ps:restart
     </pre>
   </div>
 </div>
