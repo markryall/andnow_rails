@@ -4,8 +4,72 @@
 
 <div class="hero-unit">
   <h1>Quantify your life</h1>
+  <p class="lead">This is an experimental project to facilitate obsessively recording information about your life</p>
 </div>
 
 <div class="row">
-  <div class="span12"><h1>welcome</h1></div>
+  <div class="span12">
+    <h2>The Pitch</h2>
+    <p>The initial idea of this project was just to provide a simple mechanism to capture the timestamp as activities are started and finished</p>
+    <p>Various graphs and charts will appear over time to try to assist in interpreting and analysing this informtation</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span3 well">
+    <h3>Step 1</h3>
+    <p>Create a <a href="https://browserid.org">browserid</a> account associated with your email address and log in</p>
+  </div>
+  <div class="span3 well">
+    <h3>Step 2</h3>
+    <p>Install the <a href="/AndnowDroid.apk">android client</a> application and configure your API token</p>
+  </div>
+  <div class="span3 well">
+    <h3>Step 3</h3>
+    <p>Start timing/counting anything you think might reveal interesting information</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="span12">
+    <h2>The Source</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span5 well">
+    <h2>Web Application</h2>
+    <p>The web backend is a rails 3.2.1 application.  The source can be found <a href="https://github.com/markryall/andnow_rails">here</a></p>
+  </div>
+  <div class="span5 well">
+    <h2>Android Client</h2>
+    <p>The android client application has been built and tested on 2.3.6 (a Samsung Galaxy SII).  The source can be found <a href="https://github.com/markryall/andnow_rails">here</a></p>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="span12">
+    <h2>Host your own</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span2 offset1">
+    <p>You may prefer to deploy your own instance of this application</p>
+    <p>It's really simple to get an instance up and running in heroku in a few short steps</p>
+  </div>
+  <div class="span5">
+    <pre>
+    git clone git://github.com/markryall/andnow_rails.git
+    cd andnow_rails
+    bundle
+    heroku apps:create -s cedar
+    git push heroku master
+    heroku run rake db:migrate
+    </pre>
+  </div>
 </div>
