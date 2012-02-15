@@ -1,5 +1,5 @@
 AndnowServer::Application.routes.draw do
-  resources :sessions
+  resources :sessions, :except => [:show]
   post 'sessions/import' => 'sessions#import'
   resource :user, :only => [:show, :update]
   get 'home' => 'home#index'

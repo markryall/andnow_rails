@@ -7,7 +7,7 @@ $(document).bind 'keydown', 'ctrl+n', ->
   window.location = '/sessions/new'
 
 $(document).bind 'keydown', 'ctrl+s', ->
-  $('#new_session').submit()
+  $('#save').submit()
 
 $(document).bind 'keydown', 'ctrl+e', ->
   now = new Date()
@@ -29,9 +29,6 @@ $(document).bind 'keydown', 'k', ->
 
 $(document).bind 'keydown', 'e', ->
   window.location = $('a.e').eq(index).attr('href');
-
-$(document).bind 'keydown', 'o', ->
-  window.location = $('a.v').eq(index).attr('href')
 
 $ ->
   $('.focused').trigger 'focus'

@@ -38,11 +38,6 @@
     <td><%= session.count %></td>
     <td><%= cost session.cost %></td>
     <td>
-      <%= link_to session, class: 'v' do %>
-        <i class="icon-eye-open"></i>
-      <% end %>
-    </td>
-    <td>
       <%= link_to edit_session_path(session), class: 'e' do %>
         <i class="icon-edit"></i>
       <% end %>
