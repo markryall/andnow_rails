@@ -19,7 +19,7 @@
             <% if content_for? :navbar_right %>
               <%= yield :navbar_right %>
             <% else %>
-              <li><a href="/home/logout"><i class="icon-lock icon-white"></i> logout</a></li>
+              <li><a href="/home/logout"><i class="icon-lock icon-white"></i> logout <%= @current_user.email %></a></li>
             <% end %>
           </ul>
         </div>
