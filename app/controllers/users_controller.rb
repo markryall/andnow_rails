@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @token = Token.new key: params[:key], user: @user
   end
 
   def update
