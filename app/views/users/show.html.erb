@@ -1,9 +1,9 @@
 <div class="hero-unit">
   <div class="span1 offset3">
-    <img src="<%= gravatar_url session[:email] %>">
+    <img src="<%= gravatar_url @current_user.email %>">
   </div>
   <div class="span4">
-    <h1><%= session[:email] %></h1>
+    <h1><%= @current_user.email %></h1>
   </div>
 </div>
 

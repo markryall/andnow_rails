@@ -2,7 +2,14 @@ require 'net/http'
 
 class HomeController < ApplicationController
   def index
-    redirect_to :login unless logged_in?
+    if logged_in?
+      if session[:url]
+        redirect_to session[:url]
+        session[:url] = nil
+      end
+    else
+      redirect_to :login
+    end
   end
 
   def logout

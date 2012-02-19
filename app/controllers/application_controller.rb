@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 private
   def require_login
     unless logged_in?
-      flash[:error] = "You are not logged in"
+      session[:url] = request.url
       redirect_to root_url
     end
     Time.zone = current_user.timezone if current_user and current_user.timezone
