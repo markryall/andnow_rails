@@ -14,7 +14,10 @@ private
   end
 
   def current_user
-    return nil unless session[:user_id]
-    @current_user ||= User.find session[:user_id]
+    return nil unless session[:user_id] or params[:token]
+    @current_user ||= User.find session[:user_id] if session[:user_id]
+    token = Token.find_by_key params[:token] if params[:token]
+    @current_user ||= token.user if token
+    @current_user
   end
 end

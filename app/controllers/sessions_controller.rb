@@ -1,7 +1,7 @@
 require 'csv'
 
 class SessionsController < ApplicationController
-  before_filter :require_login, :except => [:create]
+  before_filter :require_login
 
   def index
     @sessions = Session.where("user_id = ?", session[:user_id]).order "start_time DESC"
@@ -94,14 +94,9 @@ private
     session_params = params[:session]
     return unless session_params
     session_params.delete :user_id
-    user = current_user
-    if !user and session_params[:token]
-      user = User.find_by_token session_params[:token]
-      session_params.delete :token
-    end
     session_params[:description].strip! if session_params[:description]
     @session = Session.new session_params
-    @session.user = user
+    @session.user = current_user
     yield
   end
 end
