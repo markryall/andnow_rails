@@ -1,0 +1,38 @@
+div.row
+  div.span3
+    h1 Sessions
+  div.span2
+    = link_to 'New Session', new_session_path, class: 'btn'
+  div.span2
+    = link_to "Export CSV", request.parameters.merge(format: :csv), class: 'btn'
+  = form_for :import, url: sessions_import_path, html: { multipart: true, class: 'form-search' } do |f|
+    div.span2 = f.file_field :csv, class: 'input-file'
+    div.span2 = f.submit 'Import CSV', :disable_with => 'Importing...', class: 'btn'
+
+table.table.table-striped
+  thead
+    tr
+      th Description
+      th Start
+      th End
+      th Duration
+      th Count
+      th Cost
+      th
+      th
+      th
+
+  - @sessions.each do |session|
+    tr
+      td = link_to session.description, activity_url(session.description)
+      td = time session.start_time
+      td = time session.end_time
+      td = duration session.start_time, session.end_time
+      td = session.count
+      td = cost session.cost
+      td
+        = link_to edit_session_path(session), class: 'e' do
+          i.icon-edit
+      td
+        = link_to session, class: 'd', confirm: 'Are you sure?', method: :delete do
+          i.icon-remove-circle
