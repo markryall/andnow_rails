@@ -1,15 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.11'
 gem 'slim'
+gem 'pg'
 
 group :development, :test do
-  gem 'sqlite3'
-  gem 'heroku'
   gem 'rspec-rails'
 end
-
-gem 'pg', :group => :production
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
