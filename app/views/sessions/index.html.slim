@@ -24,7 +24,7 @@ table.table.table-striped
 
   - @sessions.each do |session|
     tr
-      td = link_to session.description, activity_url(session.description)
+      td = link_to session.description, activity_url(session.description), title: session.notes
       td = time session.start_time
       td = time session.end_time
       td = duration session.start_time, session.end_time
